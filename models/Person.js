@@ -4,7 +4,7 @@ const companySchema = new mongoose.Schema(
   {
     companyName: { type: String, required: true, trim: true },
     keywords: { type: [String], default: [] },
-    logoUrl: { type: String, required: true }, // Cloudinary secure_url
+    logoUrl: { type: String, default: "" }, // Cloudinary secure_url
     logoPublicId: { type: String }, // needed to delete/replace the logo later
   },
   { _id: true }
