@@ -14,7 +14,8 @@ const personSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
     phone: { type: String, trim: true },
-    email: { type: String, trim: true },
+    email: { type: String ,trim: true },
+    profileImage:{ type: String, default:"" },
     companies: {
       type: [companySchema],
       validate: {
