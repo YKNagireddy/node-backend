@@ -107,3 +107,19 @@ exports.getAllPersons = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+exports.seedPerson = async (req, res) => {
+  try {
+    const person = await Person.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      data: person,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
