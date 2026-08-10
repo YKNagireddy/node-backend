@@ -8,7 +8,27 @@ const app = express();
 
 connectDB();
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || '*' }));
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://setuconnect.netlify.app",
+  "*"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (Postman, mobile apps, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
