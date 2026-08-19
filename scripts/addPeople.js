@@ -59,6 +59,7 @@ async function run() {
 
         companies.push({
           companyName: c.companyName,
+          category: c.category,
           keywords: c.keywords || [],
           logoUrl: uploadResult.secure_url,
           logoPublicId: uploadResult.public_id,

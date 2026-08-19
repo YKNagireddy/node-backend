@@ -65,6 +65,7 @@ exports.createPerson = async (req, res) => {
 
     const companies = companiesInput.map((c, i) => ({
       companyName: c.companyName,
+      category: c.category,
       keywords: Array.isArray(c.keywords)
         ? c.keywords
         : String(c.keywords || '').split(',').map((k) => k.trim()).filter(Boolean),
