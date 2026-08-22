@@ -2,10 +2,13 @@
   "name": "business-portfolio-backend",
   "version": "1.0.0",
   "description": "Standalone Node.js/Express backend — MongoDB Atlas + Cloudinary (free tier)",
-  "main": "server.js",
+  "main": "src/server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
   },
   "dependencies": {
     "cloudinary": "^1.41.3",
@@ -17,6 +20,7 @@
     "streamifier": "^0.1.1"
   },
   "devDependencies": {
+    "jest": "^30.4.2",
     "nodemon": "^3.1.4"
   }
 }
