@@ -109,3 +109,5 @@ See the earlier deploy walkthrough for Render (free tier) — same steps apply
 here unchanged. Just remember to also set `ASSETS_PATH` won't exist on the
 deployed server (it's a local-only script), so run `addPeople.js` from your own
 machine against the deployed `MONGODB_URI`, not on Render itself.
+# docker build -t business-portfolio-backend .
+# docker run --env-file .env -p 5000:5000 business-portfolio-backend
