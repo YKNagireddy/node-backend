@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 
 import connectDB from "./models/config/db.js";
-import personRoutes from "./routes/personRoutes.js";
+import routes from "./routes/personRoutes.js";
 import corsMiddleware from "./middleware/corsMiddleware.js";
 
 const app = express();
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/person", personRoutes);
+app.use("/api/", routes);
 app.use((req, res) => {
   res.status(404).json({
     success: false,
