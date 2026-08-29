@@ -1,10 +1,15 @@
 import express from "express";
 import uploadLogos from "../middleware/uploadMiddleware.js";
+import authMiddleware from '../middleware/authmiddleware.js'
 import {
   createPersonController,
   getAllPersonsController,
   seedPersonController,
 } from "../controllers/personController.js";
+import signupController from "../controllers/signupController.js"
+import loginController from "../controllers/LoginController.js";
+import otpVerificationController from "../controllers/otpverificationController.js";
+import resendOtpController from "../controllers/resendotpController.js";
 
 const router = express.Router();
 
@@ -22,6 +27,28 @@ router.get(
 router.post(
   "/seed",
   seedPersonController
+);
+
+router.post(
+  "/signup",
+  signupController
+);
+
+router.post(
+  "/login",
+  loginController
+);
+
+router.post(
+  "/otpverify",
+  authMiddleware,
+  otpVerificationController
+);
+
+router.post(
+  "/resendotp",
+  authMiddleware,
+  resendOtpController
 );
 
 export default router;
