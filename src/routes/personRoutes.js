@@ -7,7 +7,7 @@ import {
   seedPersonController,
 } from "../controllers/personController.js";
 import signupController from "../controllers/signupController.js"
-import loginController from "../controllers/LoginController.js";
+import loginController from "../controllers/loginController.js";
 import otpVerificationController from "../controllers/otpverificationController.js";
 import resendOtpController from "../controllers/resendotpController.js";
 
