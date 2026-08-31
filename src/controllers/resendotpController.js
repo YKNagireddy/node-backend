@@ -1,4 +1,4 @@
-import { resendOtpService } from "../services/resendOtpService.js";
+import { resendOtpService } from "../services/resendotpService.js";
 
 const resendOtpController = async (req, res) => {
   try {
