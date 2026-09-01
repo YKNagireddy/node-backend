@@ -1,13 +1,14 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: process.env.MAILTRAP_HOST,
-  port: Number(process.env.MAILTRAP_PORT),
+  service: "gmail",
   auth: {
-    user: process.env.MAILTRAP_USERNAME,
+    user: process.env.MAILTRAP_FROM_EMAIL,
     pass: process.env.MAILTRAP_PASSWORD,
   },
 });
+
+const otpExpiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
 export const sendOtpEmail = async (email, otp) => {
   await transporter.sendMail(
@@ -19,7 +20,7 @@ export const sendOtpEmail = async (email, otp) => {
       <h2>Email Verification</h2>
       <p>Your OTP is:</p>
       <h1>${otp}</h1>
-      <p>This OTP will expire in 5 minutes.</p>
+      <p>This OTP will expire at ${otpExpiresAt.toLocaleTimeString()}.</p>
     `,
     },
     (error, info) => {

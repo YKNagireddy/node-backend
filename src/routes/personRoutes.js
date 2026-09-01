@@ -41,13 +41,11 @@ router.post(
 
 router.post(
   "/otpverify",
-  authMiddleware,
   otpVerificationController
 );
 
 router.post(
   "/resendotp",
-  authMiddleware,
   resendOtpController
 );
 
