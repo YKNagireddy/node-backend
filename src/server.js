@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cookieParser from "cookie-parser";
 
 import connectDB from "./models/config/db.js";
 import routes from "./routes/personRoutes.js";
@@ -12,6 +13,8 @@ connectDB();
 app.use(corsMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Read HttpOnly cookies
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.json({
