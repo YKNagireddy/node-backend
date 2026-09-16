@@ -1,29 +1,18 @@
-import jwt from "jsonwebtoken";
+import { verifyAccessToken } from "../common/jwtUtils.js";
 
 const authMiddleware = (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader) {
-      return res.status(401).json({
-        success: false,
-        message: "Authorization token is required",
-      });
-    }
-
-    const token = authHeader.split(" ")[1];
+    const token = req.cookies?.accessToken;
 
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: "Invalid authorization format",
+        loggedIn: false,
+        message: "Authentication required",
       });
     }
 
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_ACCESS_SECRET
-    );
+    const decoded = verifyAccessToken(token);
 
     req.user = decoded;
 
@@ -33,7 +22,8 @@ const authMiddleware = (req, res, next) => {
 
     return res.status(401).json({
       success: false,
-      message: "Invalid or expired token",
+      loggedIn: false,
+      message: "Invalid or expired access token",
     });
   }
 };
