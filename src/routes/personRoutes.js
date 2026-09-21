@@ -13,6 +13,8 @@ import signupController from "../controllers/signupController.js";
 import loginController from "../controllers/loginController.js";
 import otpVerificationController from "../controllers/otpverificationController.js";
 import resendOtpController from "../controllers/resendotpController.js";
+import forgotPasswordController from "../controllers/forgotPasswordController.js";
+import resetPasswordController from "../controllers/resetPasswordController.js";
 
 import {
   meController,
@@ -62,6 +64,18 @@ router.post(
 router.post(
   "/resendotp",
   resendOtpController
+);
+
+// Step 1: send a password reset OTP to the user's email
+router.post(
+  "/forgot-password",
+  forgotPasswordController
+);
+
+// Step 2: verify the OTP and set a new password
+router.post(
+  "/reset-password",
+  resetPasswordController
 );
 
 /*
